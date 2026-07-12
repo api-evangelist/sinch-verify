@@ -1,0 +1,131 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Sinch Verification API
+providerId: sinch-verify
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Number Verification
+- Phone Verification
+- OTP
+- 2FA
+- SMS Verification
+- Flash Call
+- Plans
+description: >-
+  Sinch Verification is pay-as-you-go: you are billed per verification attempt,
+  with no fixed monthly plan tier required to start. Pricing is per method and
+  per country/operator. SMS verification is charged an SMS price that varies by
+  country and operator. Flash call verification is charged a fixed price per
+  attempt and is materially cheaper than SMS in each market (Sinch cites flash
+  call as roughly 50-70% cheaper than SMS). Phone call (callout) and data
+  (seamless) verification are likewise usage-priced. A free trial is available
+  on sign-up. Exact per-unit rates are not reconciled here - the current price
+  list is downloadable from the Sinch Build dashboard.
+notes: >-
+  Verification pricing lives behind the account dashboard and varies by
+  destination country and operator, so specific numbers are intentionally not
+  hard-coded. Verify current rates on the Sinch pricing page and the Build
+  dashboard price list during reconciliation.
+sources:
+- https://sinch.com/pricing/
+- https://sinch.com/verification-api/
+- https://sinch.com/verification-api/flash-call-verification/
+- https://developers.sinch.com/docs/verification/introduction
+plans:
+- id: sinch-verify-free-trial
+  name: Free Trial
+  type: free
+  description: >-
+    Sign-up trial for evaluating the Verification API in the Sinch Build
+    dashboard before moving to pay-as-you-go billing.
+  entries:
+  - label: Trial Access
+    name: trial_access
+    type: usage
+    metric: verifications
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free trial (see dashboard for included allowance)
+    userMultiplied: false
+  elements:
+  - name: All Verification Methods
+  - name: Dashboard Access
+- id: sinch-verify-payg
+  name: Pay As You Go
+  type: usage
+  description: >-
+    Usage-based billing charged per verification attempt, priced by method and
+    by destination country/operator.
+  entries:
+  - label: SMS Verification
+    name: sms_verification
+    type: usage
+    metric: verifications
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: per-attempt SMS price by country/operator (see price list)
+    userMultiplied: false
+  - label: Flash Call Verification
+    name: flashcall_verification
+    type: usage
+    metric: verifications
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: fixed per-attempt price by country (roughly 50-70% cheaper than SMS)
+    userMultiplied: false
+  - label: Phone Call Verification
+    name: callout_verification
+    type: usage
+    metric: verifications
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: per-attempt call price by country (see price list)
+    userMultiplied: false
+  - label: Data Verification
+    name: data_verification
+    type: usage
+    metric: verifications
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: per-verification price (see price list)
+    userMultiplied: false
+  elements:
+  - name: SMS, Flash Call, Phone Call, Data Methods
+  - name: Verification SDKs
+  - name: Result Callbacks
+- id: sinch-verify-enterprise
+  name: Enterprise / Custom
+  type: enterprise
+  description: >-
+    Negotiated volume pricing, committed-use discounts, and support for
+    high-volume verification and anti-fraud programs. Contact Sinch sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Volume Pricing
+  - name: SLAs and Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

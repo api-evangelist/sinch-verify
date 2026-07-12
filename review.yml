@@ -1,0 +1,107 @@
+aid: sinch-verify
+name: Sinch Verification API
+review:
+  question: Does Sinch Verification API expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. The Sinch Verification API's own public
+    surface is request/response REST over HTTPS (start, report, and status).
+    Its only asynchronous / server-push mechanism is HTTP webhook callbacks
+    (VerificationRequestEvent, VerificationResultEvent, SmsDeliveredEvent) that
+    Sinch POSTs to a customer-configured callback URL - server-to-endpoint
+    HTTP, not a WebSocket or SSE stream on Sinch's side. There is no bidirectional
+    or streaming transport on the Verification API to model, so no AsyncAPI
+    document was created.
+findings:
+  summary: |
+    Sinch does not publish a documented public WebSocket API for the
+    Verification product. The Sinch Verification API (Sinch Verify) is a
+    phone number verification service exposed as REST over HTTPS at
+    https://verification.api.sinch.com/verification/v1. The lifecycle is:
+    start a verification (POST /verifications), report the received code or
+    caller ID (PUT /verifications/id/{id} or PUT /verifications/number/{endpoint}),
+    and read or query the result (GET /verifications/id/{id},
+    GET /verifications/{method}/number/{endpoint},
+    GET /verifications/reference/{reference}). Four methods are supported:
+    SMS, flash call, phone call (callout), and data (seamless). Asynchronous
+    delivery of results happens through HTTP webhook callbacks POSTed to a
+    customer endpoint, not through a WebSocket (ws:// or wss://) connection.
+    No realtime, bidirectional, or streaming WebSocket endpoint is documented
+    anywhere in the Verification API reference as of the review date.
+  productScope: |
+    This entry is a product-specific treatment of the Sinch Verification API.
+    The parent company, Sinch, is a global CPaaS provider whose broader
+    platform (SMS, Voice, Email, Conversation, Numbers, and Verification) is
+    cataloged separately under the "sinch" provider entry. This "sinch-verify"
+    entry isolates the Verification (Verify) product so the "number verification"
+    / OTP / 2FA use case is directly discoverable.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://verification.api.sinch.com/verification/v1
+      documented: true
+      note: Start, report, and status endpoints are all request/response REST over HTTPS.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Sinch POSTs VerificationRequestEvent, VerificationResultEvent, and SmsDeliveredEvent callbacks to a customer-configured URL. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Sinch Verification API reference as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://verification.api.sinch.com/verification/v1/verifications
+    - PUT    https://verification.api.sinch.com/verification/v1/verifications/id/{id}
+    - PUT    https://verification.api.sinch.com/verification/v1/verifications/number/{endpoint}
+    - GET    https://verification.api.sinch.com/verification/v1/verifications/id/{id}
+    - GET    https://verification.api.sinch.com/verification/v1/verifications/{method}/number/{endpoint}
+    - GET    https://verification.api.sinch.com/verification/v1/verifications/reference/{reference}
+  authentication: |
+    Server-to-server only. Two schemes: Application-signed request (HMAC-SHA256
+    over the canonicalized request using an application key and secret;
+    recommended for production) and HTTP Basic auth (application key/secret;
+    recommended for prototyping). Secrets are managed in the Sinch Build
+    dashboard and must not be embedded in client apps.
+  pricing: |
+    Pay-as-you-go, billed per verification attempt, priced by method and by
+    destination country/operator. Flash call is a fixed, lower per-attempt
+    price (Sinch cites ~50-70% cheaper than SMS). A free trial is available.
+    Exact rates are behind the Build dashboard price list and were not
+    reconciled.
+sources:
+  - url: https://developers.sinch.com/docs/verification/introduction
+    type: Documentation
+    note: Verification API overview; four methods (SMS, flash call, phone call, data).
+  - url: https://developers.sinch.com/docs/verification/api-reference/verification
+    type: APIReference
+    note: Verification endpoints; base URL https://verification.api.sinch.com; report via PUT.
+  - url: https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
+    type: APIReference
+    note: POST /verification/v1/verifications to start a verification.
+  - url: https://developers.sinch.com/docs/verification/api-reference/verification/verification-status
+    type: APIReference
+    note: Query status by id, number, or reference via GET.
+  - url: https://developers.sinch.com/docs/verification/api-reference/authentication
+    type: Documentation
+    note: Application-signed request and Basic auth; server-to-server only.
+  - url: https://developers.sinch.com/docs/verification/api-reference/verification/verification-callbacks
+    type: Documentation
+    note: Webhook callbacks (request/result/SMS-delivered) POSTed to a customer URL; not WebSocket.
+  - url: https://sinch.com/verification-api/
+    type: Website
+    note: Product page; SMS, flash call, phone call, data; pay-as-you-go.
+  - url: https://sinch.com/pricing/
+    type: Pricing
+    note: Pay-as-you-go, per-attempt; price list in the Build dashboard.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. The Sinch Verification API's own
+    public API is request/response REST (start, report, status). Its only
+    asynchronous mechanism is HTTP webhook callbacks POSTed to a customer
+    endpoint, which is not a server-push streaming transport on Sinch's API,
+    so no AsyncAPI document was created.

@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "Sinch Verification API",
+    "description": "The Sinch Verification API (Sinch Verify) verifies that a user controls a mobile phone number via SMS OTP, flash call, phone call (callout), or data (seamless). Base URL: https://verification.api.sinch.com/verification/v1. Server-to-server auth via Application-signed request (HMAC-SHA256) or HTTP Basic (prototyping). This collection uses Basic auth with the application key/secret for convenience; use application-signed requests in production. Paths are grounded in Sinch developer docs; bodies are modeled.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{applicationKey}}", "type": "string" },
+      { "key": "password", "value": "{{applicationSecret}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://verification.api.sinch.com/verification/v1", "type": "string" },
+    { "key": "applicationKey", "value": "", "type": "string" },
+    { "key": "applicationSecret", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Start Verification",
+      "item": [
+        {
+          "name": "Start a verification",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"identity\": { \"type\": \"number\", \"endpoint\": \"+15551234567\" },\n  \"method\": \"sms\"\n}" },
+            "url": { "raw": "{{baseUrl}}/verifications", "host": ["{{baseUrl}}"], "path": ["verifications"] },
+            "description": "Starts a verification with method sms, flashcall, callout, or seamless."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Report Verification",
+      "item": [
+        {
+          "name": "Report a verification by id",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"method\": \"sms\",\n  \"sms\": { \"code\": \"123456\" }\n}" },
+            "url": { "raw": "{{baseUrl}}/verifications/id/{{id}}", "host": ["{{baseUrl}}"], "path": ["verifications", "id", "{{id}}"] },
+            "description": "Reports the OTP / caller ID / entered digits for a verification identified by id."
+          }
+        },
+        {
+          "name": "Report a verification by number",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"method\": \"flashcall\",\n  \"flashCall\": { \"cli\": \"+15557654321\" }\n}" },
+            "url": { "raw": "{{baseUrl}}/verifications/number/{{endpoint}}", "host": ["{{baseUrl}}"], "path": ["verifications", "number", "{{endpoint}}"] },
+            "description": "Reports the received code / caller ID for the pending verification on the given phone number."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Verification Status",
+      "item": [
+        {
+          "name": "Query status by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/verifications/id/{{id}}", "host": ["{{baseUrl}}"], "path": ["verifications", "id", "{{id}}"] },
+            "description": "Returns the status of the verification with the given id."
+          }
+        },
+        {
+          "name": "Query status by number and method",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/verifications/sms/number/{{endpoint}}", "host": ["{{baseUrl}}"], "path": ["verifications", "sms", "number", "{{endpoint}}"] },
+            "description": "Returns the status of the verification for the given method and phone number."
+          }
+        },
+        {
+          "name": "Query status by reference",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/verifications/reference/{{reference}}", "host": ["{{baseUrl}}"], "path": ["verifications", "reference", "{{reference}}"] },
+            "description": "Returns the status of the verification associated with the custom reference string."
+          }
+        }
+      ]
+    }
+  ]
+}

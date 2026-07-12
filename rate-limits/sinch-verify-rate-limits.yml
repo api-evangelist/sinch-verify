@@ -1,0 +1,58 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Sinch Verification API
+providerId: sinch-verify
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- Number Verification
+- OTP
+- 2FA
+- Rate Limiting
+- Quotas
+description: >-
+  Sinch does not publish a single fixed numeric request-rate limit for the
+  Verification API in its public documentation. In practice, throughput and
+  abuse controls are governed at the application/account level and by
+  per-number velocity limits designed to prevent verification fraud and
+  pumping - for example, capping how frequently the same phone number can be
+  re-verified within a time window. Some of these safeguards are configurable
+  in the Sinch Build dashboard (velocity rules, allowed methods, country
+  rules). Numeric per-endpoint limits are not documented as of the review date.
+notes: >-
+  Treat rate limiting as account- and number-scoped rather than a global
+  per-second cap. Implement exponential backoff with jitter, honor any
+  Retry-After header, and configure velocity/anti-fraud rules in the dashboard.
+  Confirm exact limits with Sinch support during reconciliation.
+sources:
+- https://developers.sinch.com/docs/verification/introduction
+- https://developers.sinch.com/docs/verification/api-reference/verification
+- https://sinch.com/verification-api/
+responseCodes:
+  throttled: 429
+limits:
+- name: Verification API Requests
+  scope: application
+  metric: requests
+  limit: not published
+  notes: No fixed numeric per-second request-rate limit is documented publicly.
+- name: Per-Number Velocity
+  scope: number
+  metric: verifications
+  limit: configurable
+  notes: Anti-fraud velocity limits cap how often the same number can be verified within a window; configurable via dashboard rules.
+- name: Method / Country Rules
+  scope: account
+  metric: verifications
+  limit: configurable
+  notes: Allowed methods and destination countries can be restricted per application to control spend and abuse.
+policies:
+- name: Anti-Fraud Controls
+  description: Velocity limits and rules mitigate verification pumping and SMS fraud; tune them in the Build dashboard.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

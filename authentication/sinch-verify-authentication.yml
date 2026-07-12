@@ -1,0 +1,39 @@
+generated: '2026-07-11'
+method: derived
+source: https://developers.sinch.com/docs/verification/api-reference/authentication
+summary:
+  types:
+  - apiKey
+  - http
+schemes:
+- name: applicationSigned
+  type: apiKey
+  in: header
+  headerName: Authorization
+  scheme: application-signed
+  description: >-
+    Application-signed request (recommended for production). The Authorization
+    header is "Application {application_key}:{signature}", where signature is a
+    Base64-encoded HMAC-SHA256 computed over a canonicalized string built from
+    the HTTP verb, Content-Type, a Content-MD5 of the body, the x-timestamp
+    header, and the request path, signed with the Base64-decoded application
+    secret. The application key and secret are created and managed in the Sinch
+    Build dashboard. Because signing happens server-to-server, the secret is
+    never exposed to the client.
+  sources:
+  - https://developers.sinch.com/docs/verification/api-reference/authentication/application-signed-request
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: >-
+    HTTP Basic authentication using the application key as the username and the
+    application secret as the password. Simple to set up and recommended only
+    for prototyping; use application-signed requests in production.
+  sources:
+  - https://developers.sinch.com/docs/verification/api-reference/authentication/basic-authentication
+notes: >-
+  Both schemes are server-to-server. The Verification API is intended to be
+  called from your backend (or via the Sinch mobile/web Verification SDKs);
+  secrets should never be embedded in client applications. Verification result
+  callbacks can additionally be signed by Sinch so your callback endpoint can
+  validate authenticity.

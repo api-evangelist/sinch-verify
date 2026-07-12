@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sinch Verification API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{applicationKey}}",
+      "password": "{{applicationSecret}}"
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Start Verification", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Start a verification.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications",
+            "body": { "type": "json", "data": "{ \"identity\": { \"type\": \"number\", \"endpoint\": \"+15551234567\" }, \"method\": \"sms\" }" }
+          },
+          "docs": "Starts a verification with method sms, flashcall, callout, or seamless (data)."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Report Verification", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Report a verification by id.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/id/{id}",
+            "body": { "type": "json", "data": "{ \"method\": \"sms\", \"sms\": { \"code\": \"123456\" } }" }
+          },
+          "docs": "Reports the OTP / caller ID / entered digits for a verification identified by id."
+        },
+        {
+          "info": { "name": "Report a verification by number.", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/number/{endpoint}",
+            "body": { "type": "json", "data": "{ \"method\": \"flashcall\", \"flashCall\": { \"cli\": \"+15557654321\" } }" }
+          },
+          "docs": "Reports the received code / caller ID for the pending verification on the given phone number."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Verification Status", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Query status by id.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/id/{id}"
+          },
+          "docs": "Returns the status of the verification with the given id."
+        },
+        {
+          "info": { "name": "Query status by number and method.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/sms/number/{endpoint}"
+          },
+          "docs": "Returns the status of the verification for the given method and phone number."
+        },
+        {
+          "info": { "name": "Query status by reference.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/reference/{reference}"
+          },
+          "docs": "Returns the status of the verification associated with the custom reference string."
+        }
+      ]
+    }
+  ]
+}
