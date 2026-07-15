@@ -112,6 +112,8 @@ apis:
     custom reference string (GET /verifications/reference/{reference}).
     Returns the verification status, method, and outcome.
 common:
+- type: AgenticAccess
+  url: agentic-access/sinch-verify-agentic-access.yml
 - type: Authentication
   url: authentication/sinch-verify-authentication.yml
 - type: DomainSecurity
