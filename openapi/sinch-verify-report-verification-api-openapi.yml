@@ -1,0 +1,176 @@
+openapi: 3.0.3
+info:
+  title: Sinch Verification Report Verification API
+  description: 'The Sinch Verification API (Sinch Verify) confirms that a user controls a mobile phone number, powering OTP, two-factor authentication (2FA), and anti-fraud sign-up flows. It supports four verification methods: SMS, flash call, phone call (callout), and data (seamless / silent). The flow is: start a verification, report the received code or caller ID, then read the pass/fail result. Status can also be queried by id, by number, or by a custom reference. Base URL is https://verification.api.sinch.com/verification/v1. Requests are server-to-server and authenticated with either an Application-signed request (HMAC-SHA256 over the request using your application key and secret) or HTTP Basic auth (recommended only for prototyping). Paths and methods below are grounded in the public Sinch developer documentation; request/response schemas are modeled and should be reconciled against the live API reference.'
+  version: '1.0'
+  contact:
+    name: Sinch
+    url: https://developers.sinch.com/docs/verification/
+  x-modeled: true
+servers:
+- url: https://verification.api.sinch.com/verification/v1
+  description: Sinch Verification API production
+security:
+- applicationSigned: []
+- basicAuth: []
+tags:
+- name: Report Verification
+  description: Report the received code or caller ID to complete a verification.
+paths:
+  /verifications/id/{id}:
+    put:
+      operationId: reportVerificationById
+      tags:
+      - Report Verification
+      summary: Report a verification by id
+      description: Reports the OTP (SMS), observed caller ID (flash call), or entered digits (phone call) for the verification with the given id, and returns the pass/fail result.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The id returned when the verification was started.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportVerificationRequest'
+      responses:
+        '200':
+          description: Verification result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /verifications/number/{endpoint}:
+    put:
+      operationId: reportVerificationByIdentity
+      tags:
+      - Report Verification
+      summary: Report a verification by number
+      description: Reports the received code or caller ID for the pending verification associated with the given phone number (identity), and returns the pass/fail result.
+      parameters:
+      - name: endpoint
+        in: path
+        required: true
+        description: The phone number (identity) the verification was sent to, in E.164 format.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportVerificationRequest'
+      responses:
+        '200':
+          description: Verification result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or was missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: No matching verification was found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    VerificationResult:
+      type: object
+      properties:
+        id:
+          type: string
+        method:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - SUCCESSFUL
+          - FAIL
+          - DENIED
+          - ABORTED
+          - ERROR
+        reason:
+          type: string
+        reference:
+          type: string
+        source:
+          type: string
+    ReportVerificationRequest:
+      type: object
+      required:
+      - method
+      properties:
+        method:
+          type: string
+          enum:
+          - sms
+          - flashcall
+          - callout
+        sms:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The OTP the user received.
+        flashCall:
+          type: object
+          properties:
+            cli:
+              type: string
+              description: The caller ID the device observed.
+        callout:
+          type: object
+          properties:
+            code:
+              type: string
+              description: The digits the user entered during the call.
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        message:
+          type: string
+        reference:
+          type: string
+  securitySchemes:
+    applicationSigned:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Application-signed request. The Authorization header is "Application {application_key}:{signature}" where signature is a Base64-encoded HMAC-SHA256 of the canonicalized request (method, content type, Content-MD5, x-timestamp header, and path) using the Base64-decoded application secret. Recommended for production.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using the application key as username and the application secret as password. Recommended for prototyping only.
