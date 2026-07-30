@@ -16,7 +16,20 @@ description: >-
   the product-specific treatment of the Verification API; the parent
   company Sinch is a global CPaaS provider (SMS, Voice, Email, Verification,
   Conversation) cataloged separately under the "sinch" provider entry.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sinch-verify.png
 tags:
 - Number Verification
 - Phone Verification
@@ -32,85 +45,81 @@ created: '2026-07-11'
 modified: '2026-07-11'
 specificationVersion: '0.19'
 apis:
-- aid: sinch-verify:sinch-verify-start-verification-api
-  name: Sinch Start Verification API
-  tags:
-  - Number Verification
-  - OTP
-  - 2FA
-  - SMS Verification
-  - Flash Call
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
-  baseURL: https://verification.api.sinch.com/verification/v1
-  properties:
-  - url: https://developers.sinch.com/docs/verification/introduction
-    type: Documentation
-  - url: https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
-    type: APIReference
-  - url: openapi/sinch-verify-openapi.yml
-    type: OpenAPI
-  - url: collections/sinch-verify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/sinch-verify.opencollection.json
-    type: OpenCollection
-  description: >-
-    Starts a phone number verification (POST /verifications). Choose the
-    method - sms, flashcall, callout (phone call), or seamless (data) - and
-    provide the phone number as the identity. Sinch responds with the
-    template or CLI filter the client should watch for. This is the same
-    endpoint the mobile and web Verification SDKs call, and it can be
-    invoked directly from any backend.
 - aid: sinch-verify:sinch-verify-report-verification-api
-  name: Sinch Report Verification API
-  tags:
-  - Number Verification
-  - OTP
-  - 2FA
-  - Verify
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.sinch.com/docs/verification/api-reference/verification
+  name: Sinch Verification API Report Verification API
+  description: Report the received code or caller ID to complete a verification.
+  humanURL: >-
+    https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
   baseURL: https://verification.api.sinch.com/verification/v1
+  tags:
+  - Report Verification
   properties:
-  - url: https://developers.sinch.com/docs/verification/api-reference/verification
-    type: APIReference
-  - url: openapi/sinch-verify-openapi.yml
-    type: OpenAPI
-  - url: collections/sinch-verify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/sinch-verify.opencollection.json
-    type: OpenCollection
-  description: >-
-    Reports the code or caller ID a user received so Sinch can complete the
-    verification and return a pass/fail result. Report by verification id
-    (PUT /verifications/id/{id}) or by the phone number the verification was
-    sent to (PUT /verifications/number/{endpoint}), passing the OTP for SMS,
-    the observed caller ID for flash call, or the entered digits for a
-    phone call.
+  - type: OpenAPI
+    url: openapi/sinch-verify-report-verification-api-openapi.yml
+  - type: Documentation
+    url: https://developers.sinch.com/docs/verification/introduction
+  - type: APIReference
+    url: >-
+      https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
+  - type: PostmanCollection
+    url: collections/sinch-verify.postman_collection.json
+  - type: OpenCollection
+    url: collections/sinch-verify.opencollection.json
+  - type: APIReference
+    url: https://developers.sinch.com/docs/verification/api-reference/verification
+  - type: APIReference
+    url: >-
+      https://developers.sinch.com/docs/verification/api-reference/verification/verification-status
+- aid: sinch-verify:sinch-verify-start-verification-api
+  name: Sinch Verification API Start Verification API
+  description: Initiate a phone number verification.
+  humanURL: >-
+    https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
+  baseURL: https://verification.api.sinch.com/verification/v1
+  tags:
+  - Start Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/sinch-verify-start-verification-api-openapi.yml
+  - type: Documentation
+    url: https://developers.sinch.com/docs/verification/introduction
+  - type: APIReference
+    url: >-
+      https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
+  - type: PostmanCollection
+    url: collections/sinch-verify.postman_collection.json
+  - type: OpenCollection
+    url: collections/sinch-verify.opencollection.json
+  - type: APIReference
+    url: https://developers.sinch.com/docs/verification/api-reference/verification
+  - type: APIReference
+    url: >-
+      https://developers.sinch.com/docs/verification/api-reference/verification/verification-status
 - aid: sinch-verify:sinch-verify-verification-status-api
-  name: Sinch Verification Status API
-  tags:
-  - Number Verification
-  - Status
-  - Reporting
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.sinch.com/docs/verification/api-reference/verification/verification-status
+  name: Sinch Verification API Verification Status API
+  description: Query the status of pending and completed verifications.
+  humanURL: >-
+    https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
   baseURL: https://verification.api.sinch.com/verification/v1
+  tags:
+  - Verification Status
   properties:
-  - url: https://developers.sinch.com/docs/verification/api-reference/verification/verification-status
-    type: APIReference
-  - url: openapi/sinch-verify-openapi.yml
-    type: OpenAPI
-  - url: collections/sinch-verify.postman_collection.json
-    type: PostmanCollection
-  - url: collections/sinch-verify.opencollection.json
-    type: OpenCollection
-  description: >-
-    Queries the status of pending and completed verifications ad-hoc.
-    Look up by verification id (GET /verifications/id/{id}), by phone number
-    and method (GET /verifications/{method}/number/{endpoint}), or by a
-    custom reference string (GET /verifications/reference/{reference}).
-    Returns the verification status, method, and outcome.
+  - type: OpenAPI
+    url: openapi/sinch-verify-verification-status-api-openapi.yml
+  - type: Documentation
+    url: https://developers.sinch.com/docs/verification/introduction
+  - type: APIReference
+    url: >-
+      https://developers.sinch.com/docs/verification/api-reference/verification/verifications-start
+  - type: PostmanCollection
+    url: collections/sinch-verify.postman_collection.json
+  - type: OpenCollection
+    url: collections/sinch-verify.opencollection.json
+  - type: APIReference
+    url: https://developers.sinch.com/docs/verification/api-reference/verification
+  - type: APIReference
+    url: >-
+      https://developers.sinch.com/docs/verification/api-reference/verification/verification-status
 common:
 - type: AgenticAccess
   url: agentic-access/sinch-verify-agentic-access.yml
