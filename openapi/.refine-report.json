@@ -1,0 +1,18 @@
+{
+  "provider": "sinch-verify",
+  "sources": [
+    "sinch-verify-report-verification-api-openapi.yml",
+    "sinch-verify-start-verification-api-openapi.yml",
+    "sinch-verify-verification-status-api-openapi.yml"
+  ],
+  "outputs": [
+    "sinch-verify-report-verification-api-openapi.yml",
+    "sinch-verify-start-verification-api-openapi.yml",
+    "sinch-verify-verification-status-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
