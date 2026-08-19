@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "7db4b276-2cc8-4c84-adfb-62bc9fccfd4c",
+      "name": "Start Verification",
+      "description": {
+        "content": "Initiate a phone number verification.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64b71679-ef5b-430a-8253-133fbb31a8e1",
+          "name": "Start a verification",
+          "request": {
+            "name": "Start a verification",
+            "description": {
+              "content": "Starts a verification using the chosen method (sms, flashcall, callout, or seamless). Provide the phone number as the identity. Sinch returns the template or CLI filter the client should observe. Used by the mobile and web Verification SDKs and callable directly from a backend.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"identity\": {\n    \"type\": \"<string>\",\n    \"endpoint\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"custom\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5353deb8-6804-4865-81db-21fa16f89633",
+              "name": "Verification started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identity\": {\n    \"type\": \"number\",\n    \"endpoint\": \"+15551234567\"\n  },\n  \"method\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"custom\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"method\": \"sms\",\n  \"sms\": {\n    \"template\": \"string\"\n  },\n  \"flashCall\": {\n    \"cliFilter\": \"string\",\n    \"interceptionTimeout\": 1055\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fffd885-1328-4821-9b52-2a6e97db2ace",
+              "name": "The request was malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identity\": {\n    \"type\": \"number\",\n    \"endpoint\": \"+15551234567\"\n  },\n  \"method\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"custom\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 8054,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "811f93de-4be7-4a19-9ff5-953ddf9baca5",
+              "name": "Authentication failed or was missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"identity\": {\n    \"type\": \"number\",\n    \"endpoint\": \"+15551234567\"\n  },\n  \"method\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"custom\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 8054,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://verification.api.sinch.com/verification/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9133f4b4-8e05-4d8b-aace-0769e8bef452",
+    "name": "Sinch Verification Report Verification Start Verification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sinch Verification API (Sinch Verify) confirms that a user controls a mobile phone number, powering OTP, two-factor authentication (2FA), and anti-fraud sign-up flows. It supports four verification methods: SMS, flash call, phone call (callout), and data (seamless / silent). The flow is: start a verification, report the received code or caller ID, then read the pass/fail result. Status can also be queried by id, by number, or by a custom reference. Base URL is https://verification.api.sinch.com/verification/v1. Requests are server-to-server and authenticated with either an Application-signed request (HMAC-SHA256 over the request using your application key and secret) or HTTP Basic auth (recommended only for prototyping). Paths and methods below are grounded in the public Sinch developer documentation; request/response schemas are modeled and should be reconciled against the live API reference.\n\nContact Support:\n Name: Sinch",
+      "type": "text/plain"
+    }
+  }
+}

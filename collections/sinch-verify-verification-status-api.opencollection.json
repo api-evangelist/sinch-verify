@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sinch Verification Report Verification Verification Status API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Verification Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query verification status by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/id/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the status and outcome of the verification with the given id."
+        },
+        {
+          "info": {
+            "name": "Query verification status by number and method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/:method/number/:endpoint",
+            "params": [
+              {
+                "name": "method",
+                "value": "",
+                "type": "path",
+                "description": "The verification method."
+              },
+              {
+                "name": "endpoint",
+                "value": "",
+                "type": "path",
+                "description": "The phone number (identity), in E.164 format."
+              }
+            ]
+          },
+          "docs": "Returns the status of the verification for the given method and phone number (identity)."
+        },
+        {
+          "info": {
+            "name": "Query verification status by reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/reference/:reference",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "path",
+                "description": "The custom reference string set at verification start."
+              }
+            ]
+          },
+          "docs": "Returns the status of the verification associated with the custom reference string supplied when the verification was started."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sinch Verification Report Verification API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Report Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Report a verification by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/id/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id returned when the verification was started."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reports the OTP (SMS), observed caller ID (flash call), or entered digits (phone call) for the verification with the given id, and returns the pass/fail result."
+        },
+        {
+          "info": {
+            "name": "Report a verification by number",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://verification.api.sinch.com/verification/v1/verifications/number/:endpoint",
+            "params": [
+              {
+                "name": "endpoint",
+                "value": "",
+                "type": "path",
+                "description": "The phone number (identity) the verification was sent to, in E.164 format."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reports the received code or caller ID for the pending verification associated with the given phone number (identity), and returns the pass/fail result."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

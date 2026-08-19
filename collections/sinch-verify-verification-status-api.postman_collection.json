@@ -1,0 +1,693 @@
+{
+  "item": [
+    {
+      "id": "cc9ea6d1-dd40-4826-997d-fad00cf8dcde",
+      "name": "Verification Status",
+      "description": {
+        "content": "Query the status of pending and completed verifications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb093a1a-f3f8-4267-86fd-3e87921fc3ea",
+          "name": "Query verification status by id",
+          "request": {
+            "name": "Query verification status by id",
+            "description": {
+              "content": "Returns the status and outcome of the verification with the given id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "id",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5f6072a-9bd1-465a-8df5-552dce3938bb",
+              "name": "Verification status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "id",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"method\": \"string\",\n  \"status\": \"PENDING\",\n  \"reason\": \"string\",\n  \"reference\": \"string\",\n  \"identity\": {\n    \"type\": \"number\",\n    \"endpoint\": \"+15551234567\"\n  },\n  \"countryId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d931b308-8526-4d9d-bc6d-0bd55ca4a9a8",
+              "name": "Authentication failed or was missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "id",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7257,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6709ac30-8ae8-4c45-a7d3-d539cb439e49",
+              "name": "No matching verification was found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "id",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7257,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e80b4ca-852a-4c90-9326-8377aa82f188",
+          "name": "Query verification status by number and method",
+          "request": {
+            "name": "Query verification status by number and method",
+            "description": {
+              "content": "Returns the status of the verification for the given method and phone number (identity).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                ":method",
+                "number",
+                ":endpoint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "method",
+                  "description": "(Required) The verification method."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "endpoint",
+                  "description": "(Required) The phone number (identity), in E.164 format."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4020060-2f21-4555-823b-26c347af06f1",
+              "name": "Verification status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    ":method",
+                    "number",
+                    ":endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "method",
+                      "description": "(Required) The verification method."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpoint",
+                      "description": "(Required) The phone number (identity), in E.164 format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"method\": \"string\",\n  \"status\": \"PENDING\",\n  \"reason\": \"string\",\n  \"reference\": \"string\",\n  \"identity\": {\n    \"type\": \"number\",\n    \"endpoint\": \"+15551234567\"\n  },\n  \"countryId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e08bc77c-380a-42a1-b632-7f8018c3a075",
+              "name": "Authentication failed or was missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    ":method",
+                    "number",
+                    ":endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "method",
+                      "description": "(Required) The verification method."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpoint",
+                      "description": "(Required) The phone number (identity), in E.164 format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7257,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abdceb04-8551-4a4c-a603-f54ba3e168b3",
+              "name": "No matching verification was found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    ":method",
+                    "number",
+                    ":endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "method",
+                      "description": "(Required) The verification method."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpoint",
+                      "description": "(Required) The phone number (identity), in E.164 format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7257,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1a28870-b51d-420b-b34f-4a11b591486d",
+          "name": "Query verification status by reference",
+          "request": {
+            "name": "Query verification status by reference",
+            "description": {
+              "content": "Returns the status of the verification associated with the custom reference string supplied when the verification was started.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "reference",
+                ":reference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) The custom reference string set at verification start."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfe02758-7eca-460f-82b4-ce3bb1fe3136",
+              "name": "Verification status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "reference",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) The custom reference string set at verification start."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"method\": \"string\",\n  \"status\": \"PENDING\",\n  \"reason\": \"string\",\n  \"reference\": \"string\",\n  \"identity\": {\n    \"type\": \"number\",\n    \"endpoint\": \"+15551234567\"\n  },\n  \"countryId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd09582f-68ab-4159-83da-08446562d517",
+              "name": "Authentication failed or was missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "reference",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) The custom reference string set at verification start."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7257,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "375967b6-09b7-44c9-adef-528efaac5531",
+              "name": "No matching verification was found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "reference",
+                    ":reference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) The custom reference string set at verification start."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7257,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://verification.api.sinch.com/verification/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9e843d8-ef5d-42bb-a9ac-41e15f9315a6",
+    "name": "Sinch Verification Report Verification Verification Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sinch Verification API (Sinch Verify) confirms that a user controls a mobile phone number, powering OTP, two-factor authentication (2FA), and anti-fraud sign-up flows. It supports four verification methods: SMS, flash call, phone call (callout), and data (seamless / silent). The flow is: start a verification, report the received code or caller ID, then read the pass/fail result. Status can also be queried by id, by number, or by a custom reference. Base URL is https://verification.api.sinch.com/verification/v1. Requests are server-to-server and authenticated with either an Application-signed request (HMAC-SHA256 over the request using your application key and secret) or HTTP Basic auth (recommended only for prototyping). Paths and methods below are grounded in the public Sinch developer documentation; request/response schemas are modeled and should be reconciled against the live API reference.\n\nContact Support:\n Name: Sinch",
+      "type": "text/plain"
+    }
+  }
+}

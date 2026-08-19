@@ -1,0 +1,653 @@
+{
+  "item": [
+    {
+      "id": "ba900a20-1eaa-4824-bd12-126a3bae710a",
+      "name": "Report Verification",
+      "description": {
+        "content": "Report the received code or caller ID to complete a verification.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "388ea6fa-ed86-4a79-a0a5-472dfc8af801",
+          "name": "Report a verification by id",
+          "request": {
+            "name": "Report a verification by id",
+            "description": {
+              "content": "Reports the OTP (SMS), observed caller ID (flash call), or entered digits (phone call) for the verification with the given id, and returns the pass/fail result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "id",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id returned when the verification was started."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e3d4b25-69ff-4922-a68c-5aad9b556ae1",
+              "name": "Verification result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "id",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id returned when the verification was started."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"method\": \"string\",\n  \"status\": \"FAIL\",\n  \"reason\": \"string\",\n  \"reference\": \"string\",\n  \"source\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ecf6cd1-20a7-4a4d-9dc8-1733d37693f0",
+              "name": "The request was malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "id",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id returned when the verification was started."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 5244,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c58edc47-a05e-4783-b3ad-dc775ab7c0e4",
+              "name": "Authentication failed or was missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "id",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id returned when the verification was started."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 5244,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "824e90f4-619b-4862-b965-be4811653e46",
+              "name": "No matching verification was found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "id",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id returned when the verification was started."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 5244,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a69b86d4-bff9-4803-910c-de0aa67a843c",
+          "name": "Report a verification by number",
+          "request": {
+            "name": "Report a verification by number",
+            "description": {
+              "content": "Reports the received code or caller ID for the pending verification associated with the given phone number (identity), and returns the pass/fail result.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "verifications",
+                "number",
+                ":endpoint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "endpoint",
+                  "description": "(Required) The phone number (identity) the verification was sent to, in E.164 format."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f708ad3-50fb-49a1-b637-76952f6abe78",
+              "name": "Verification result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "number",
+                    ":endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpoint",
+                      "description": "(Required) The phone number (identity) the verification was sent to, in E.164 format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"method\": \"string\",\n  \"status\": \"FAIL\",\n  \"reason\": \"string\",\n  \"reference\": \"string\",\n  \"source\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e4e6a76-bd07-4d92-882a-1fb8b1a3283f",
+              "name": "The request was malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "number",
+                    ":endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpoint",
+                      "description": "(Required) The phone number (identity) the verification was sent to, in E.164 format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 5244,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a73d257-5cc6-4f43-950c-98461b7cc038",
+              "name": "Authentication failed or was missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "number",
+                    ":endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpoint",
+                      "description": "(Required) The phone number (identity) the verification was sent to, in E.164 format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 5244,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81efef90-03b1-47b0-a773-2e5b043820f9",
+              "name": "No matching verification was found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "verifications",
+                    "number",
+                    ":endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "endpoint",
+                      "description": "(Required) The phone number (identity) the verification was sent to, in E.164 format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"sms\": {\n    \"code\": \"<string>\"\n  },\n  \"flashCall\": {\n    \"cli\": \"<string>\"\n  },\n  \"callout\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 5244,\n  \"message\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://verification.api.sinch.com/verification/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "beddf62e-dd47-45bb-848f-faea40c3158d",
+    "name": "Sinch Verification Report Verification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Sinch Verification API (Sinch Verify) confirms that a user controls a mobile phone number, powering OTP, two-factor authentication (2FA), and anti-fraud sign-up flows. It supports four verification methods: SMS, flash call, phone call (callout), and data (seamless / silent). The flow is: start a verification, report the received code or caller ID, then read the pass/fail result. Status can also be queried by id, by number, or by a custom reference. Base URL is https://verification.api.sinch.com/verification/v1. Requests are server-to-server and authenticated with either an Application-signed request (HMAC-SHA256 over the request using your application key and secret) or HTTP Basic auth (recommended only for prototyping). Paths and methods below are grounded in the public Sinch developer documentation; request/response schemas are modeled and should be reconciled against the live API reference.\n\nContact Support:\n Name: Sinch",
+      "type": "text/plain"
+    }
+  }
+}
