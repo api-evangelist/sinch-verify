@@ -43,7 +43,7 @@ tags:
 - Sinch
 created: '2026-07-11'
 modified: '2026-07-11'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: sinch-verify:sinch-verify-report-verification-api
   name: Sinch Verification API Report Verification API
