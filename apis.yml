@@ -16,6 +16,18 @@ description: >-
   the product-specific treatment of the Verification API; the parent
   company Sinch is a global CPaaS provider (SMS, Voice, Email, Verification,
   Conversation) cataloged separately under the "sinch" provider entry.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
