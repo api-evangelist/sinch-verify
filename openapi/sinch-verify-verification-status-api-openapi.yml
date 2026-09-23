@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Sinch Verification Report Verification Verification Status API
-  description: 'The Sinch Verification API (Sinch Verify) confirms that a user controls a mobile phone number, powering OTP, two-factor authentication (2FA), and anti-fraud sign-up flows. It supports four verification methods: SMS, flash call, phone call (callout), and data (seamless / silent). The flow is: start a verification, report the received code or caller ID, then read the pass/fail result. Status can also be queried by id, by number, or by a custom reference. Base URL is https://verification.api.sinch.com/verification/v1. Requests are server-to-server and authenticated with either an Application-signed request (HMAC-SHA256 over the request using your application key and secret) or HTTP Basic auth (recommended only for prototyping). Paths and methods below are grounded in the public Sinch developer documentation; request/response schemas are modeled and should be reconciled against the live API reference.'
+  title: Sinch Verification Verification Status API
+  description: The Sinch Verification API (Sinch Verify) confirms that a user controls a mobile phone number, powering OTP, two-factor authentication (2FA), and anti-fraud sign-up flows.
   version: '1.0'
   contact:
     name: Sinch

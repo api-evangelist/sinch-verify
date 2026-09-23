@@ -1,9 +1,7 @@
 {
   "provider": "sinch-verify",
   "sources": [
-    "sinch-verify-report-verification-api-openapi.yml",
-    "sinch-verify-start-verification-api-openapi.yml",
-    "sinch-verify-verification-status-api-openapi.yml"
+    "_original/sinch-verify-openapi.yml"
   ],
   "outputs": [
     "sinch-verify-report-verification-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sinch-verify-report-verification-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "sinch-verify-start-verification-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "sinch-verify-verification-status-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sinch-verify-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "sinch-verify-report-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sinch-verify-start-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "sinch-verify-verification-status-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
