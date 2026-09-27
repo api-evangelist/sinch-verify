@@ -85,14 +85,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    BadRequest:
-      description: The request was malformed.
+    Unauthorized:
+      description: Authentication failed or was missing.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or was missing.
+    BadRequest:
+      description: The request was malformed.
       content:
         application/json:
           schema:
@@ -104,28 +104,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    VerificationResult:
-      type: object
-      properties:
-        id:
-          type: string
-        method:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - SUCCESSFUL
-          - FAIL
-          - DENIED
-          - ABORTED
-          - ERROR
-        reason:
-          type: string
-        reference:
-          type: string
-        source:
-          type: string
     ReportVerificationRequest:
       type: object
       required:
@@ -163,6 +141,28 @@ components:
         message:
           type: string
         reference:
+          type: string
+    VerificationResult:
+      type: object
+      properties:
+        id:
+          type: string
+        method:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - SUCCESSFUL
+          - FAIL
+          - DENIED
+          - ABORTED
+          - ERROR
+        reason:
+          type: string
+        reference:
+          type: string
+        source:
           type: string
   securitySchemes:
     applicationSigned:

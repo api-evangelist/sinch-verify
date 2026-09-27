@@ -103,29 +103,17 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed or was missing.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: No matching verification was found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
+    Identity:
       type: object
       properties:
-        errorCode:
-          type: integer
-        message:
+        type:
           type: string
-        reference:
+          example: number
+        endpoint:
           type: string
+          description: The phone number in E.164 format.
+          example: '+15551234567'
     VerificationStatus:
       type: object
       properties:
@@ -150,16 +138,28 @@ components:
           $ref: '#/components/schemas/Identity'
         countryId:
           type: string
-    Identity:
+    Error:
       type: object
       properties:
-        type:
+        errorCode:
+          type: integer
+        message:
           type: string
-          example: number
-        endpoint:
+        reference:
           type: string
-          description: The phone number in E.164 format.
-          example: '+15551234567'
+  responses:
+    Unauthorized:
+      description: Authentication failed or was missing.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: No matching verification was found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     applicationSigned:
       type: apiKey
