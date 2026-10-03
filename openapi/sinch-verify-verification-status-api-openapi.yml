@@ -104,16 +104,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Identity:
-      type: object
-      properties:
-        type:
-          type: string
-          example: number
-        endpoint:
-          type: string
-          description: The phone number in E.164 format.
-          example: '+15551234567'
     VerificationStatus:
       type: object
       properties:
@@ -138,6 +128,16 @@ components:
           $ref: '#/components/schemas/Identity'
         countryId:
           type: string
+    Identity:
+      type: object
+      properties:
+        type:
+          type: string
+          example: number
+        endpoint:
+          type: string
+          description: The phone number in E.164 format.
+          example: '+15551234567'
     Error:
       type: object
       properties:
@@ -148,14 +148,14 @@ components:
         reference:
           type: string
   responses:
-    Unauthorized:
-      description: Authentication failed or was missing.
+    NotFound:
+      description: No matching verification was found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: No matching verification was found.
+    Unauthorized:
+      description: Authentication failed or was missing.
       content:
         application/json:
           schema:
