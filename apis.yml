@@ -54,7 +54,7 @@ tags:
 - Identity Verification
 - Sinch
 created: '2026-07-11'
-modified: '2026-07-11'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: sinch-verify:sinch-verify-report-verification-api
@@ -133,6 +133,10 @@ apis:
     url: >-
       https://developers.sinch.com/docs/verification/api-reference/verification/verification-status
 common:
+- url: https://sinch.com/blog/
+  type: Blog
+- url: https://sinch.com/blog/feed/
+  type: BlogRSS
 - type: AgenticAccess
   url: agentic-access/sinch-verify-agentic-access.yml
 - type: Authentication
