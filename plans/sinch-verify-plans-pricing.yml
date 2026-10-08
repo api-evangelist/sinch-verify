@@ -134,3 +134,37 @@ plans:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - negotiated
+  - transaction
+  plans:
+  - name: Free Trial
+    access: free
+    model: metered
+    model_how: derived
+    units:
+    - transaction
+    periods:
+    - month
+  - name: Pay As You Go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - transaction
+    periods:
+    - month
+  - name: Enterprise / Custom
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - year
