@@ -43,16 +43,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Identity:
-      type: object
-      properties:
-        type:
-          type: string
-          example: number
-        endpoint:
-          type: string
-          description: The phone number in E.164 format.
-          example: '+15551234567'
     StartVerificationResponse:
       type: object
       properties:
@@ -100,6 +90,16 @@ components:
         custom:
           type: string
           description: Optional custom string passed through to callbacks.
+    Identity:
+      type: object
+      properties:
+        type:
+          type: string
+          example: number
+        endpoint:
+          type: string
+          description: The phone number in E.164 format.
+          example: '+15551234567'
     Error:
       type: object
       properties:

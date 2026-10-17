@@ -85,6 +85,15 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        message:
+          type: string
+        reference:
+          type: string
     VerificationResult:
       type: object
       properties:
@@ -136,15 +145,6 @@ components:
             code:
               type: string
               description: The digits the user entered during the call.
-    Error:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-        message:
-          type: string
-        reference:
-          type: string
   responses:
     Unauthorized:
       description: Authentication failed or was missing.

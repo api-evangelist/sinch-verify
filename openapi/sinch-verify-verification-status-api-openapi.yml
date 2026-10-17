@@ -114,6 +114,15 @@ components:
           type: string
           description: The phone number in E.164 format.
           example: '+15551234567'
+    Error:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        message:
+          type: string
+        reference:
+          type: string
     VerificationStatus:
       type: object
       properties:
@@ -137,15 +146,6 @@ components:
         identity:
           $ref: '#/components/schemas/Identity'
         countryId:
-          type: string
-    Error:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-        message:
-          type: string
-        reference:
           type: string
   responses:
     Unauthorized:
